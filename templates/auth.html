@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Authentication Page</title>
+  <style>
+    *{
+    margin : 0vh;
+    padding : 0vh;
+    box-sizing: border-box;
+    }
+    body{
+      background : #FF004E4A;
+      padding : 2vh 5vw;
+      text-align: center;
+      justify-items: center;
+      font-family: "roboto,sans-serif";
+    }
+    .warning{
+      padding : 2vh 5vw;
+      background : #0000004F;
+      border-radius : 2vh;
+      font-size: 1.3rem;
+      margin-top: 3vh;
+    }
+    
+    .warning h1{
+      color : #FF0000;
+      border-bottom: 1vw solid #FF0000;
+      display : block;
+      width : 55vw;
+      justify-self: center;
+      border-radius : 5vw;
+    }
+    .warning h3{
+      color : #FFCA00;
+      font-size: 1rem;
+    }
+    
+    .form{
+      
+      border-radius : 15px;
+      margin-top: 8vh;
+      padding : 2vh 5vw;
+      width : 85vw;
+      background : #FF080824;
+    }
+    
+   .form h1{
+     border-bottom: 2px solid #000000;
+     border-radius: 10px;
+     color : #313131;
+     font-size: 1.5rem;
+  
+   } 
+   .form .input{
+     width : 75vw;
+     height : 8vh;
+     border: none;
+     border-radius: 10px;
+     padding : 1vh 5vw ;
+     text-align: center;
+     font-size: 1.3rem;
+     font-weight: bold;
+     }
+    .form .submit{
+      width : 55vw;
+      height : 7vh; 
+      background : #727272;
+      border: none;
+      border-radius: 15px;
+      text-align: center;
+      padding : 1vh 5vw;
+      font-size: 1.3rem;
+      margin-bottom: 1vh;
+      font-weight: bold;
+    }
+   .submit:hover{
+     background: #FF0062C2;
+   }
+   
+     .main-wait{
+            display : none;
+            width:100vw;
+            height:100vh;
+            background : #000000E0;
+            top:0%;
+            left : 0%;
+            position : fixed;
+        }
+        .waiting {
+            height:auto;
+            width : 78vw;
+            background : #FF00D8C4;
+            z-index:1;
+            justify-content: center;
+            text-align: center;
+            padding : 25px;
+            display:flex;
+            border : 2px solid #FF00D8;
+            border-radius: 20px;
+            position: fixed;
+            top :38%;
+            left: 15%;
+            animation: wait 5s infinite;
+        }
+        @keyframes wait{
+            0%{
+                background : #FF00E7E8;
+            }
+            50%{
+                background : #8500D9E6;
+                border: 2px solid #9E05FF ;
+            }
+            100%{
+                background : #ff00e7e8;
+            }
+        }
+        
+   .response{
+     display: none;
+     width : 100vw;
+     height : 100vh;
+     position:fixed;
+     background : #000000E3;
+     top:0%;
+     left:0%;
+     text-align: center;
+     justify-items: center;
+     padding: 2vh 5vw;
+   }  
+   .info{
+     border: 2px solid #FF0000;
+     border-radius: 15px;
+     background :#FF0000D4;
+     width : 78vw;
+     height: auto;
+     padding : 2vh 5vw;
+     position : fixed;
+     top:35%;
+   }
+   .info h1{
+     border-bottom : 2px solid #000000;
+     border-radius: 10px;
+   }
+   .info button{
+     width:25vw;
+     height:6vh;
+     font-size: 1.5rem;
+     padding : 5px;
+     background :#000000CC;
+     color :#FFFFFF;
+     border:none;
+     border-radius: 15px;
+     font-weight: bold;
+   }
+  </style>
+</head>
+
+<body>
+  <div class="main-wait" style="display:none"><div class="waiting"> <h1>Checking...</h1></div></div>
+  
+  
+    <div class="response" {{status}}><div class="info"><h1>Access Denied</h1><br><h3>Sorry,it is not for you.It is only for my special person.</h3><br><button onclick="hide()">OK</button></div></div>
+  
+  
+  <div class="warning">
+    <h1>Warning</h1><br>
+    <h3>It is only for special person !!</h3>
+  </div>
+  
+  <div class="form">
+    <form method="POST">
+      <h1><strong>Enter your name </strong></h1><br>
+      <input type="name" maxlength="50" name="name" class="input" placeholder="Enter here" required><br><br>
+      <input type="submit" class="submit" value="Check">
+    </form>
+  </div>
+    <script>
+        document.querySelector('form').addEventListener("submit",function(){
+            document.querySelector('.main-wait').style.display="flex";
+        }
+        )
+        
+        function hide(){
+          const btn = document.querySelector('.response');
+          btn.style.background='blue';
+          btn.style.display='none';
+        }
+    </script>
+</body>
+
+</html>

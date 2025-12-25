@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Page</title>
+</head>
+<style>
+  *{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+  body{
+    display : flex;
+    justify-items: center;
+    justify-content: center;
+    background: black;
+  }
+  h3{
+    text-transform: uppercase;
+    align-self: left;
+  }
+  a{
+    text-decoration: none;
+    display : inline-block;
+    margin-top: 0.3em;
+    padding: 0vh 3vw;
+    letter-spacing: 0.1em;
+    border-bottom: 1vw solid #FF0101;
+    text-transform: uppercase;
+    font-size: 2em;
+   color : #FF01A6;
+   animation: bg 1s infinite;
+  }
+  @keyframes bg{
+    20%{
+      color: #FF0101;
+      border-bottom:1vw solid  #FF0101;
+    }
+    40%{
+      color: #FFF701;
+      border-bottom:1vw solid  #FFF701;
+    }
+    60%{
+      color: #01FFD9;
+      border-bottom: : 1vw solid #01FFD9;
+    }
+    80%{
+      color: #0601FF;
+      border-bottom : 1vw solid #0601FF;
+    }
+    100%{
+      color: #FF01E3;
+      border-bottom : 1vw solid #FF01E3;
+    }
+  }
+  .box{
+    background: #000000;
+    color : #FF0606;
+    margin-top: 30vh;
+    padding: 10vh 2vw;
+    text-align: center;
+    boder : 1vw solid red;
+    border-radius : 1em;
+    width : 70vw;
+    height : 30vh;
+    position: relative;
+  }
+  .bx::after{
+    content:"";
+    position: absolute;
+    top : 0;
+    left : 0;
+    height : 30vh;
+    width : 70vw;
+    background: linear-gradient(red,green,blue,yellow);
+    z-index: -1;
+    padding-: 20vh;
+  }
+  
+  .box::before ,.box::after{
+  content: "";
+  background: linear-gradient(
+    200deg,
+    #FF0000, #FF7300, #FFFB00, #48FF00,
+    #00FFD5, #002BFF, #FF00C8, #FF0000
+  );
+  position: absolute;
+  top: -1vh;
+  left: -1vw;
+  background-size: 600%;
+  z-index: -1;
+  width: calc(100% + 3vw);
+  height:  calc(100% + 2vh);
+  filter: blur(4px);
+  animation: glowing 20s linear infinite;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+  opacity: 1;
+}
+
+@keyframes glowing {
+  0% {background-position: 0 0;}
+  50% {background-position: 400% 0;}
+  100% {background-position: 0 0;}
+}
+
+</style>
+<body>
+  <div class="box">
+  <h3>
+    I have something special for you please click on the LINK.
+  </h3>
+  <a href={{url_for('verification')}}>
+    <h4>
+      click me
+    </h4>
+  </a>
+  </div>
+</body>
+</html>

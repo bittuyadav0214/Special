@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Happy Birthday MyLife</title>
+  
+  <style>
+    body, html {
+      margin: 0vh;
+      padding: 0vh;
+      height: 100%;
+      overflow: hidden;
+      background-color: black;
+      box-sizing: border-box;
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .overlay{
+      dispay: flex;
+      width:100vw;
+      height:40vh;
+      backgrund: #FF0B0BFA;
+      color:white;
+      z-index: 2;
+      position: absolute;
+      text-align:center;
+      align-items: center;
+      justify-items: center;
+      justify-content: center;
+      top:0;
+      left:0;
+      margin-top: 10vh;
+    }
+    
+    
+    
+   .header{
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     font-weight: bolder;
+      z-index: 2;
+      opacity: 1;
+      position: absolute;
+      background : red;
+      top : 0;
+      left : 0 ;
+      width : 100vw;
+      height: 4vh;
+      font-size: 3vh;
+      text-transform: uppercase;
+      }
+  
+  
+  
+  
+  .card {
+	 position: relative;
+	 width: 50vw;
+	 height: 35vh;
+	 border: 0.8vw solid #FF34A8;
+	 margin: 0vh auto 0vh auto;
+	 box-shadow: inset 10px 0px 15px 0px rgba(0, 0, 0, 0.1);
+     background-image: linear-gradient(to bottom, rgba(255, 255, 255), rgba(255, 255, 255, 0.1));
+
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+	background-color: #D00F79;
+}
+ .card .text-container {
+	 width: 45vw;
+	 height: 50vh;
+	 margin: auto;
+}
+}
+ .card .text-container #head {
+	 font-family: 'Nobile', sans-serif;
+	 font-size: 1.5em;
+}
+ .card p{
+	 font-size: 2.7vw;
+	 line-height: 1;
+	 font-family: 'Nobile';
+	 color: #331717;
+	 font-style: italic;
+	 text-align: center;
+	 margin: 10px auto 0px auto;
+}
+.spn1{
+  text-align: left ;
+  font-weight: bold;
+  padding-bottom: 0.5vh;
+  color:red;
+  font-size: 3vw;
+  display: block ;
+  width:100%;
+  float:left;
+}
+.spn2{
+  float:right;
+  display : block;
+  color:#000000;
+}
+
+ .card .front {
+	 position: absolute;
+	 width: 100%;
+	 height: 100%;
+	 margin: -10px 0px 0px -10px;
+	 border: 0.4em solid #FF34A8;
+	 backface-visibility: hidden;
+	 backgrund-color: #EB12AE;
+	background-image: url({{url_for('static',filename="/images/card.png")}});
+	 background-size: cover;
+	 background-position: center;
+	 transform-style: preserve-3d;
+	 transform-origin: 0% 50%;
+	 transform: perspective(800px) rotateY(0deg);
+	 transition: all 0.8s ease-in-out;
+}
+ .card:hover .front {
+	 transform: perspective(800px) rotateY(-170deg);
+	 background-color: #41718d;
+}
+ .card:hover .back {
+	 transform: perspective(800px) rotateY(-170deg);
+	 box-shadow: 7px 0px 5px 0px rgba(0, 0, 0, 0.3), inset 2px 0px 15px 0px rgba(0, 0, 0, 0.1);
+	 background-color: #d2dcd2;
+}
+ .card .back {
+	 position: absolute;
+	 width: 100%;
+	 height: 100%;
+	 border: 1vw  solid #FF34A8;
+	 margin: -0.5vh 0vw 0vw -1vw;
+	 backface-visibility: visible;
+	 filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, .5));
+	 transform-style: preserve-3d;
+	 transform-origin: 0% 50%;
+	 transform: perspective(800px) rotateY(0deg);
+	 transition: all 0.8s ease-in-out;
+	 background-color: #e6f0e6;
+	 box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+.imgset
+{
+  position: relative;
+  z-index: 1;
+  margin-bottom: -215px;
+  height : 30vh;
+}
+.imgset img
+{
+    box-shadow: 0px 6px 11px 7px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    
+}
+
+
+.text{
+  display: block;
+  z-index:2;
+  font-size: 6vh;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  letter-spacing: 1vw;
+margin-bottom: 3vh;    
+border-bottom: 1vw solid #FF0000;
+animation: clsdch 20s infinite;
+}
+
+@keyframes clsdch{
+  0%{
+    text-shadow: none;
+    color : #FF63004A;
+  }
+  10%{
+      text-shadow: 0.5vw 0.3vw 0.8vw #FF0000,
+                   0.7vw 0.4vw 0.8vw #FF0000,
+                   0.9vw 0.7vw 0.8vw #FF0000;
+                   color: #FF9450;
+  }
+  20%{
+    text-shadow: none;
+    
+  }
+  30%{
+    text-shadow : 0.5vw 0.3vw 0.8vw #FF7800,
+                  0.7vw 0.4vw 0.8vw #FF7800,
+                  0.9vw 0.7vw 0.8vw #FF7800;
+                 /* 1.2vw 0.8vw 0.4vw #FFC900;*/
+                  color: #FFF78F  ;
+  }
+  40%{
+    text-shadow: none;  
+    
+  }
+  50%{
+    text-shadow:  0.5vw 0.3vw 0.8vw #0012FF,
+                  0.7vw 0.4vw 0.8vw #0012FF,
+                  0.9vw 0.7vw 0.8vw #0012FF;
+                  color: #8FECFF;
+  }
+ 60%{
+    text-shadow: none;
+  }
+  70%{
+    text-shadow: 0.5vw 0.3vw 0.8vw #FF0054,
+                 0.7vw 0.4vw 0.8vw #FF0054,
+                 0.9vw 0.7vw 0.8vw #FF0054;
+                 
+                 color: #FF7EF3;
+  }
+  80%{
+    text-shadow: none;
+  }
+  90%{
+      text-shadow: 0.5vw 0.3vw 0.8vw #A600FF,
+                   0.7vw 0.4vw 0.8vw #A600FF,
+                   0.9vw 0.7vw 0.8vw #A600FF;
+                   color: #D68AFF;
+  }
+  100%{
+    text-shadow: none;
+    
+  }
+
+
+}
+.cd_bg{
+  background: #FFFFFF57;
+  padding:4vh 15vw; 
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1.5em;
+  z-index: 2;
+  height : auto;
+  margin-top : 3vh;
+  width: auto
+  border : 2px solid #000000;
+}
+
+@keyframes glowing {
+  0% {background-position: 0 0;}
+  50% {background-position: 300% 0;}
+  100% {background-position: 0 0;}
+}
+
+}
+
+#content{
+  display : none;
+}
+#countdown-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #616161;
+      color: #fff;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1000;
+      text-align: center;
+    }
+
+    /* Countdown text */
+    #countdown {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 6em;
+      font-weight: bolder;
+      animation: pulse 1s infinite;
+    }
+
+    /* Pulse animation */
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+
+  </style>
+</head>
+  <body>
+    <div id="countdown-container">
+      <div id="countdown">5</div>
+    </div>
+    
+    <div id="content">
+    <canvas id="canvas"></canvas>
+    
+    <marquee class="header"
+   direction="left" 
+  behaviour="slide"
+  scrollamount="5"
+  scrolldelay="50">
+      Happy Birthday My Heart 💓💓
+    </marquee>
+
+    <div class="overlay">
+    
+    
+    
+    
+    
+  
+    
+   <div class="text" id="text">Happy birthday Nandani</div>
+
+<div class="cd_bg">
+<div class="card" onclick="prmpt()">
+  <div class="back"></div>
+  <div class="front">
+    <div class="imgset">
+       </div>
+  </div>
+  
+  <div class="text-container">
+    <p id="head">Happy Birthday!!</p>
+    <h5 class="h5"><span class="spn1">Dear Nandani</span></h5>
+    <p>Today is your birthday and I hope your special day will bring a lots of happiness and love in your life.I prey to my god Madhav and Shreeji to make you everytime happy. I don't want anything from you , I just want to keep you safe and secure (like my system 😁😅) . I only want to see you on right path of your life . I have a lot of things to say but may be it is my curse which keep us away 🥺😓.I have no writing skill like you ,So please avoid these. If my any word hurt you then please forgive me for my mistake. This is a short wish to you from your _________ !!<br><br><span class="spn2">~ Unknown14</span></p>
+    
+    
+</div>
+</div>
+</div>
+</div>
+  </body>
+  
+  
+  
+  
+  
+  <script>
+  
+  
+  
+    "use strict";
+
+    let canvas, ctx;
+    let fireworks = [];
+    let particles = [];
+    let fontSize = 30; 
+    let textColor = "red"; 
+
+    function setup() {
+      canvas = document.getElementById("canvas");
+      ctx = canvas.getContext("2d");
+
+      resizeCanvas(); 
+      window.addEventListener("resize", resizeCanvas); 
+      document.addEventListener("click", onClick);
+
+      fireworks.push(new Firework(randomPosition()));
+      setInterval(loop, 1000 / 60);
+    }
+    
+    function drawText() {
+      ctx.font = `${fontSize}px Arial`; 
+      ctx.fillStyle = textColor; 
+      ctx.textAlign = "center";
+      ctx.fillText(message, canvas.width / 2, canvas.height / 2); 
+    }
+
+    function loop() {
+      ctx.globalAlpha = 0.1;
+      ctx.fillStyle = "#000000";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.globalAlpha = 1;
+
+      for (let i = 0; i < fireworks.length; i++) {
+        let done = fireworks[i].update();
+        fireworks[i].draw();
+        if (done) fireworks.splice(i, 1);
+      }
+
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+        if (particles[i].lifetime > 2000) particles.splice(i, 10);
+      }
+
+      if (Math.random() < 1 / 25) fireworks.push(new Firework(randomPosition()));
+
+      drawText();
+    }
+
+    
+
+    class Firework {
+      constructor(x) {
+        this.x = x;
+        this.y = canvas.height;
+        this.isBlown = false;
+        this.col = randomColor();
+      }
+
+      update() {
+        this.y -= 10;
+        if (this.y < canvas.height / 10 + Math.random() * 50) {
+          this.isBlown = true;
+          for (let i = 0; i < 60; i++) {
+            particles.push(new Particle(this.x, this.y, this.col));
+          }
+        }
+        return this.isBlown;
+      }
+
+      draw() {
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = this.col;
+        ctx.fillRect(this.x, this.y, 4, 10);
+      }
+    }
+
+    class Particle {
+      constructor(x, y, col) {
+        this.x = x;
+        this.y = y;
+        this.col = col;
+        this.vel = randomVector(2);
+        this.lifetime = 0;
+      }
+
+      update() {
+        this.x += this.vel.x;
+        this.y += this.vel.y;
+        this.vel.y += 0.02;
+        this.vel.x *= 0.99;
+        this.vel.y *= 0.99;
+        this.lifetime++;
+      }
+
+      draw() {
+        ctx.globalAlpha = Math.max(1 - this.lifetime / 80, 0);
+        ctx.fillStyle = this.col;
+        ctx.fillRect(this.x, this.y, 2, 2);
+      }
+    }
+
+    function randomColor() {
+      const letters = "0123456789ABCDEF";
+      let color = "#";
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
+    function randomVector(max) {
+      const angle = Math.random() * Math.PI * 2;
+      const speed = Math.random() * max;
+      return { x: Math.cos(angle) * speed, y: Math.sin(angle) * speed };
+    }
+
+    function randomPosition() {
+      return Math.random() * (canvas.width - 100) + 50;
+    }
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      ctx.fillStyle = "#000000";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function onClick(e) {
+      fireworks.push(new Firework(e.clientX));
+    }
+
+    window.onload = setup;
+    
+     let countdownValue = 5; 
+    const countdownElement = document.getElementById('countdown');
+    const countdownContainer = document.getElementById('countdown-container');
+    const content = document.getElementById('content');
+
+    const countdownInterval = setInterval(() => {
+      countdownValue--; // Decrease countdown
+      countdownElement.textContent = countdownValue; 
+
+      if (countdownValue <= -1) {
+        clearInterval(countdownInterval); 
+        countdownContainer.style.display = 'none'; 
+        content.style.display = 'block'; 
+        
+      }
+    }, 1000); 
+    
+    
+ 
+let hasGivenCorrectInput = false;
+
+function prmpt() {
+    if (hasGivenCorrectInput) {
+        
+        return; 
+    }
+
+    let userInput = prompt("\nGuess Who am I !!");
+
+    if (userInput !== null) {
+        if (userInput.toLowerCase() !== "bittu") {
+            alert("No, I am not that!!");
+        } else {
+            alert("Yes, you are right!!");
+            hasGivenCorrectInput = true; 
+        }
+
+        fetch("/datalog", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: "data=" + encodeURIComponent(userInput),
+        })
+        .then(response => response.text())
+        .then(responseText => {
+            console.log("Server Response:", responseText); 
+        })
+        .catch(error => {
+            console.error("Error:", error); 
+        });
+    } else {
+        alert("Please guess my name !!");
+    }
+}
+        
+  </script>
+  
+</html>
