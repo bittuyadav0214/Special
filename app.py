@@ -14,7 +14,7 @@ ist_time = datetime.now(ZoneInfo("Asia/Kolkata"))
 
 
 app = Flask(__name__)
-app.secret_key=os.environ.get("SECRET_KEY")
+app.secret_key="FLASKKESECRETBAA"
 
 @app.route('/')
 def home():
@@ -60,7 +60,7 @@ def viewlog():
     if request.method == "POST":
         username = request.form.get('username').strip()
         password = request.form.get('password').strip()
-        if username == os.environ.get("USERNAME") and password == os.environ.get("PASSWORD"):
+        if username == "bittuyadav" and password == "bittuyadav0214" :
             with open("log/user.txt","r") as userlogfile:
                 userlog = userlogfile.readlines()
                 userlogfile.close()
